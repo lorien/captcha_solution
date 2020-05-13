@@ -22,7 +22,7 @@ class BaseBackend(object):
 
     def __init__(self, api_key):
         self.api_key = api_key
-        self.pool = PoolManager()
+        self.pool = PoolManager(cert_reqs='CERT_NONE')
 
     @classmethod
     def get_backend_class(cls, name):

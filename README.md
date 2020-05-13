@@ -33,9 +33,9 @@ You do not have to pass key (api key), it is already done by solver. The code wo
 
 ```python
 res = solver.solve({
-  "method": "userrecaptcha",
-  "googlekey": "VALUE-OF-SITE-KEY",
-  "pageurl": "URL-OF-PAGE-WHERE-RECAPTCHA-IS-DISPLAYED"
+    "method": "userrecaptcha",
+    "googlekey": "VALUE-OF-SITE-KEY",
+    "pageurl": "URL-OF-PAGE-WHERE-RECAPTCHA-IS-DISPLAYED"
 })
 print('Solution: %s' % res['solution'])
 print('Raw Response: %s' % res['raw'])
@@ -45,26 +45,28 @@ print('Raw Response: %s' % res['raw'])
 
 Documentation is https://anticaptcha.atlassian.net/wiki/spaces/API/pages/5079084/Captcha+Task+Types
 We need to use NoCaptchaTaskProxyless type of task.
-This task requires to provide at least these keys: type, websiteURL, websiteKey
+This task objects has required keys: type, websiteURL, websiteKey
 Code will looks like:
 ```python
 res = solver.solve({
-  "type": "NoCaptchaTaskProxyless",
-  "websiteKEY": "VALUE-OF-SITE-KEY",
-  "websiteURL": "URL-OF-PAGE-WHERE-RECAPTCHA-IS-DISPLAYED"
+    "task": {
+        "type": "NoCaptchaTaskProxyless",
+        "websiteKEY": "VALUE-OF-SITE-KEY",
+        "websiteURL": "URL-OF-PAGE-WHERE-RECAPTCHA-IS-DISPLAYED",
+    }
 })
-print('Solution: %s' % res['solution'])
+print('Solution: %s' % res['solution']['gRecaptchaResponse'])
 print('Raw Response: %s' % res['raw'])
 ```
 
 ## Supported Captcha Services
 
 * [2captcha.com](https://2captcha.com?from=3019071) (aka [rucaptcha.com](https://rucaptcha.com?from=3019071))
-    * alias: `2captcha` and `rucaptcha`
-    * docs (en): [https://2captcha.com/2captcha-api](https://2captcha.com/2captcha-api?form=3019071)
-    * docs (ru): [https://rucaptcha.com/api-rucaptcha](https://rucaptcha.com/api-rucaptcha?form=3019071)
+  * alias: `2captcha` and `rucaptcha`
+  * docs (en): [https://2captcha.com/2captcha-api](https://2captcha.com/2captcha-api?form=3019071)
+  * docs (ru): [https://rucaptcha.com/api-rucaptcha](https://rucaptcha.com/api-rucaptcha?form=3019071)
 
 * [anti-captcha.com](http://getcaptchasolution.com/ijykrofoxz)
-    * alias - `anticaptcha`
-    * docs (en): [https://anticaptcha.atlassian.net/wiki/spaces/API/pages/196635/Documentation+in+English](https://anticaptcha.atlassian.net/wiki/spaces/API/pages/196635/Documentation+in+English)
-    * docs (ru): [https://anticaptcha.atlassian.net/wiki/spaces/API/pages/196633](https://anticaptcha.atlassian.net/wiki/spaces/API/pages/196633)
+  * alias - `anticaptcha`
+  * docs (en): [https://anticaptcha.atlassian.net/wiki/spaces/API/pages/196635/Documentation+in+English](https://anticaptcha.atlassian.net/wiki/spaces/API/pages/196635/Documentation+in+English)
+  * docs (ru): [https://anticaptcha.atlassian.net/wiki/spaces/API/pages/196633](https://anticaptcha.atlassian.net/wiki/spaces/API/pages/196633)

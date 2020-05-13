@@ -18,7 +18,7 @@ def setup_logging():
 
 def main(**kwargs):
     setup_logging()
-    engine = '2captcha'
+    engine = 'anticaptcha'
     sol = CaptchaSolver(
         backend=engine,
         api_key=config['%s_key' % engine],
@@ -34,7 +34,7 @@ def main(**kwargs):
     #        print('Solution found: %s' % res)
     #        break
     #    time.sleep(2)
-    print('Solution: %s' % sol.solve(data))
+    #print('Solution: %s' % sol.solve(data))
     #print('method: %s' % sol.backend.call_method('getSpendingStats'))
     print('Balance: %s' % sol.get_balance())
     #print('Solution: %s' % sol.solve({

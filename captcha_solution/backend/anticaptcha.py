@@ -43,7 +43,10 @@ class AnticaptchaBackend(BaseBackend):
             )
         data = json.loads(data.decode('utf-8'))
         if data['errorId'] == 0:
-            return data['taskId']
+            return {
+                'task_id': data['taskId'],
+                'raw': data,
+            }
         else:
             error = data['errorDescription']
             raise RemoteServiceError(error, error)
@@ -67,7 +70,10 @@ class AnticaptchaBackend(BaseBackend):
             if data['status'] == 'processing':
                 raise SolutionNotReady('task is processing', 'processing')
             else:
-                return data['solution']
+                return {
+                    'solution': data['solution'],
+                    'raw': data,
+                }
         else:
             ecode = data['errorCode']
             edesc = data['errorDescription']
@@ -99,6 +105,11 @@ class AnticaptchaBackend(BaseBackend):
             raise RemoteServiceError(ecode, edesc)
         else:
             return data
+
+    ### Get Balance
+
+    def get_balance(self):
+        return self.call_method('getBalance')['balance']
 
     ### Utilities
     def prepare_request(self, fields=None):
