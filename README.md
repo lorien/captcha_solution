@@ -26,7 +26,7 @@ request data schema so you need to consult with documentation to figure out form
 
 ## Example, solving recaptcha with 2captcha.com
 
-Documentation is [https://2captcha.com/2captcha-api?form=3019071#solving_recaptchav2_new](https://2captcha.com/2captcha-api?form=3019071#solving_recaptchav2_new?from=3019071)
+Documentation is [https://2captcha.com/2captcha-api#solving\_recaptchav2\_new](https://2captcha.com/2captcha-api?form=3019071#solving_recaptchav2_new)
 
 Required POST parameters are: key, method, googlekey, pageurl.
 You do not have to pass key (api key), it is already done by solver. The code would be like:
