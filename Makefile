@@ -1,4 +1,4 @@
-.PHONY: build venv deps clean init ioweb
+.PHONY: build venv deps clean init release
 
 build: venv deps init
 
@@ -17,8 +17,5 @@ init:
 	if [ ! -e var/run ]; then mkdir -p var/run; fi
 	if [ ! -e var/log ]; then mkdir -p var/log; fi
 
-ioweb:
-	mkdir src
-	ln -s /web/ioweb src
-	ln -s src/ioweb/ioweb
-	.env/bin/pip install -e src/ioweb
+release:
+	git push; git push --tags; python3 setup.py clean sdist; twine upload dist/*

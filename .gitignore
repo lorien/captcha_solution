@@ -5,6 +5,8 @@
 *.orig
 
 pip-log.txt
+*.egg-info
+/dist/
 /.env
 /var/
 /.hg/
