@@ -18,9 +18,10 @@ def setup_logging():
 
 def main(**kwargs):
     setup_logging()
+    engine = '2captcha'
     sol = CaptchaSolver(
-        backend='rucaptcha',
-        api_key=config['rucaptcha_key'],
+        backend=engine,
+        api_key=config['%s_key' % engine],
     )
     data = open('data/captcha.jpg', 'rb')
     #task_id = sol.submit(data)
@@ -33,9 +34,10 @@ def main(**kwargs):
     #        print('Solution found: %s' % res)
     #        break
     #    time.sleep(2)
-    #print('Solution: %s' % sol.solve(data))
+    print('Solution: %s' % sol.solve(data))
+    #print('method: %s' % sol.backend.call_method('getSpendingStats'))
     #print('Balance: %s' % sol.get_balance())
-    print('Solution: %s' % sol.solve({
-        'lang': 'ru',
-        'textcaptcha': 'как тебя зовут',
-    }))
+    #print('Solution: %s' % sol.solve({
+    #    'lang': 'ru',
+    #    'textcaptcha': 'как тебя зовут',
+    #}))
