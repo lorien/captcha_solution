@@ -14,6 +14,6 @@ with open('captcha.png', 'rb') as inp:
 
 ## Supported Captcha Services
 
-* 2captcha.com - `2captcha`
-* rucaptcha.com - `rucaptcha`
-* anticaptcha.com - `anticaptcha`
+* [2captcha.com](https://2captcha.com?from=3019071) - `2captcha`
+* [rucaptcha.com](https://rucaptcha.com?from=3019071) - `rucaptcha`
+* [anti-captcha.com](http://getcaptchasolution.com/ijykrofoxz) - `anticaptcha`
