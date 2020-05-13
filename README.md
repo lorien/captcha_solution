@@ -2,7 +2,7 @@
 
 Captcha Solution package is a simple interface to multiple captcha solving services.
 
-## Image Captcha Example
+## Simple Image Captcha
 
 The simplest case is to solve captcha image stored into file.
 Pass the file handler to the `solve` method. The solution will
@@ -18,18 +18,18 @@ with open('captcha.png', 'rb') as inp:
     print(res['solution'])
 ```
 
-## Custom Captcha Example
+## Custom Captcha
+
 If you want to solve non-image type of captcha (text captcha, recaptcha, etc) you have to
-use same solve method but pass the dict of parameters. Each captcha service has its own
-parameters data schema so you need to consult with documentation to figure out the format of request
+use same `solve` method but you need to pass the dict of parameters. Each captcha service has its own
+request data schema so you need to consult with documentation to figure out format of request
 
-Say, we want to solve recaptcha. And we alredy obtained site key. Let's try two services:
-2captcha.com and anti-captcha.com
+## Example, solving recaptcha with 2captcha.com
 
-In case of 2captcha, the documentation is
-https://2captcha.com/2captcha-api?form=3019071#solving_recaptchav2_new
-The list of POST parameters tells us there are required parameters: key, method, googlekey, pageurl.
-You do not have to pass key, it is already done by solver. The call to method would be this:
+Documentation is https://2captcha.com/2captcha-api?form=3019071#solving_recaptchav2_new
+
+Required POST parameters are: key, method, googlekey, pageurl.
+You do not have to pass key (api key), it is already done by solver. The code would be like:
 
 ```python
 res = solver.solve({
@@ -39,9 +39,13 @@ res = solver.solve({
 })
 print('Solution: %s' % res['solution'])
 print('Raw Response: %s' % res['raw'])
+```
 
-In case of anti-captcha, the documentation is here https://anticaptcha.atlassian.net/wiki/spaces/API/pages/5079084/Captcha+Task+Types
-Required keys for NoCaptchaTaskProxyless request are type, websiteURL, websiteKey
+## Example, solving recaptcha with anti-captcha.com
+
+Documentation is https://anticaptcha.atlassian.net/wiki/spaces/API/pages/5079084/Captcha+Task+Types
+We need to use NoCaptchaTaskProxyless type of task.
+This task requires to provide at least these keys: type, websiteURL, websiteKey
 Code will looks like:
 ```python
 res = solver.solve({
