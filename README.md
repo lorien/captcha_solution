@@ -2,6 +2,10 @@
 
 Captcha Solution package is a simple interface to multiple captcha solving services.
 
+## Installation
+
+Run `pip install -U captcha_solution`
+
 ## Simple Image Captcha
 
 The simplest case is to solve captcha image stored into file.
