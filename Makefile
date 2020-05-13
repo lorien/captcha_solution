@@ -6,7 +6,7 @@ venv:
 	virtualenv -p python3 .env
 
 deps:
-	.env/bin/pip install -r requirements.txt
+	.env/bin/pip install -Ur requirements.txt
 
 clean:
 	find -name '*.pyc' -delete

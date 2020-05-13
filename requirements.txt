@@ -2,3 +2,5 @@ urllib3
 runscript
 pytest
 bumpversion
+setuptools
+wheel
