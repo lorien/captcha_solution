@@ -59,7 +59,7 @@ class CaptchaSolver(object):
             time.sleep(3)
 
     def solve(self, data=None):
-        task_id = self.submit(data)
+        task_id = self.submit(data)['task_id']
         while True:
             try:
                 res = self.check_result(task_id)

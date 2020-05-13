@@ -36,7 +36,7 @@ def main(**kwargs):
     #    time.sleep(2)
     print('Solution: %s' % sol.solve(data))
     #print('method: %s' % sol.backend.call_method('getSpendingStats'))
-    #print('Balance: %s' % sol.get_balance())
+    print('Balance: %s' % sol.get_balance())
     #print('Solution: %s' % sol.solve({
     #    'lang': 'ru',
     #    'textcaptcha': 'как тебя зовут',

@@ -41,7 +41,10 @@ class RucaptchaBackend(BaseBackend):
             )
         data = json.loads(data.decode('utf-8'))
         if data['status'] == 1:
-            return data['request']
+            return {
+                'task_id': data['request'],
+                'raw': data,
+            }
         else:
             error = data['request']
             if error == 'ERROR_ZERO_BALANCE':
@@ -70,7 +73,10 @@ class RucaptchaBackend(BaseBackend):
             )
         data = json.loads(data.decode('utf-8'))
         if data['status'] == 1:
-            return data['request']
+            return {
+                'solution': data['request'],
+                'raw': data,
+            }
         else:
             error = data['request']
             if error == 'CAPCHA_NOT_READY':
@@ -100,7 +106,10 @@ class RucaptchaBackend(BaseBackend):
             )
         data = json.loads(data.decode('utf-8'))
         if data['status'] == 1:
-            return float(data['request'])
+            return {
+                'balance': float(data['request']),
+                'raw': data,
+            }
         else:
             error = data['request']
             raise RemoteServiceError(error, error)
