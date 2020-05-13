@@ -13,7 +13,7 @@ setup(
     url='https://github.com/lorien/captcha_solution',
     description = 'Universal interface to captcha solving services',
     long_description = open(os.path.join(ROOT, 'README.md')).read(),
-    long_description_content_type = 'markdown',
+    long_description_content_type = 'text/markdown',
     packages = find_packages(exclude=['test', 'script']),
     download_url='https://github.com/lorien/captcha_solver/releases',
     license = "MIT",
